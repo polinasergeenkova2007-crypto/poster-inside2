@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inside</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="screen1">
+      <div class="screen1-stage">
+        <div class="text-layer">
+          <div class="inside-wrapper">
+            <img src="images/inside.png" alt="Inside" />
+          </div>
+          <h2 class="subtitle">победи своего монстра</h2>
+        </div>
+
+        <div class="scene">
+          <div class="battle-floor" aria-hidden="true">
+            <img src="images/кирпичик1.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик3.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик5.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик7.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик9.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик11.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик10.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик8.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик6.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик4.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик2.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик1.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик3.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик5.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик7.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик9.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик11.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик10.png" class="floor-brick" alt="" />
+            <img src="images/кирпичик8.png" class="floor-brick" alt="" />
+          </div>
+          <img src="images/hero.png" class="hero" alt="Герой" />
+          <img src="images/monster.png" class="monster" alt="Монстр" />
+        </div>
+
+        <div class="next-block-sketch" aria-hidden="true">
+          <svg class="next-block-svg" viewBox="0 0 1000 860" preserveAspectRatio="xMidYMid meet">
+            <polyline class="sketch-line" points="600 0 780 0 780 35 800 35 800 70 820 70 820 105 840 105 840 140 860 140 860 175 880 175 880 210" />
+            <polyline class="sketch-line" points="120 210 880 210" />
+            <polyline class="sketch-line" points="930 210 990 210 990 730" />
+            <polyline class="sketch-line" points="120 210 120 390 60 390 60 720 120 720 120 860" />
+            <polyline class="sketch-line" points="260 860 260 720 320 720 320 390 260 390 260 320 420 320 420 550 520 550 520 720 990 720" />
+          </svg>
+          <div class="next-block-bricks" id="next-block-bricks"></div>
+        </div>
+
+        <div class="battle-ui">
+          <div class="battle-hud">
+            <p class="battle-score">удары героя: <span id="battle-hero-score">0</span>/3</p>
+            <p class="battle-score">касания монстра: <span id="battle-monster-score">0</span>/3</p>
+          </div>
+          <button class="battle-button battle-start" id="battle-start" type="button">играть</button>
+          <div class="battle-instructions" aria-label="Управление">
+            <span class="battle-key">←</span>
+            <span class="battle-key">→</span>
+            <span class="battle-label">идти</span>
+            <span class="battle-key">↑</span>
+            <span class="battle-label">прыжок</span>
+            <span class="battle-key">↓</span>
+            <span class="battle-label">удар</span>
+            <span class="battle-key battle-key-wide">R</span>
+            <span class="battle-label">заново</span>
+          </div>
+          <p class="battle-status" id="battle-status">
+            Успей 3 раза ударить монстра раньше, чем он коснётся героя 3 раза.
+          </p>
+        </div>
+      </div>
+  </section>
+
+    <section class="screen2">
+      <div class="screen2-stage">
+        <img src="images/brick-tunnel.png" class="maze-tunnel" alt="" aria-hidden="true" />
+
+        <div class="maze-fires" aria-hidden="true">
+          <img src="images/fire.png" class="maze-fire fire-1" alt="" />
+          <img src="images/fire.png" class="maze-fire fire-2" alt="" />
+          <img src="images/fire.png" class="maze-fire fire-3" alt="" />
+          <img src="images/fire.png" class="maze-fire fire-4" alt="" />
+          <img src="images/fire.png" class="maze-fire fire-5" alt="" />
+          <img src="images/fire.png" class="maze-fire fire-6" alt="" />
+        </div>
+
+        <div class="maze-goal-marker" aria-hidden="true"></div>
+
+        <img src="images/геройлево.png" class="maze-hero maze-labyrinth-hero" id="maze-hero" alt="Герой в лабиринте" />
+
+        <div class="maze-ui">
+          <p class="maze-status" id="maze-status">Нажми играть, веди героя стрелками по лабиринту и коснись светящегося прямоугольника, чтобы победить.</p>
+          <div class="maze-instructions" aria-label="Управление лабиринтом">
+            <button class="maze-start maze-labyrinth-start" id="maze-start" type="button">играть</button>
+            <span class="maze-key">←</span>
+            <span class="maze-key">↑</span>
+            <span class="maze-key">↓</span>
+            <span class="maze-key">→</span>
+            <span class="maze-label">двигать героя по лабиринту</span>
+            <span class="maze-key maze-key-wide">R</span>
+            <span class="maze-label">заново</span>
+          </div>
+        </div>
+        <div class="maze-playfield" id="maze-playfield" aria-label="Лабиринт с выходом"></div>
+
+        <div class="road-runner-shell">
+          <div class="road-runner-ui">
+            <p class="road-runner-status" id="road-runner-status">Нажми играть и уводи героя стрелками влево и вправо, чтобы не врезаться в препятствия.</p>
+            <div class="road-runner-instructions" aria-label="Управление дорогой">
+              <button class="road-runner-start" id="road-runner-start" type="button">играть</button>
+              <span class="road-runner-key">←</span>
+              <span class="road-runner-key">→</span>
+              <span class="road-runner-label">уводить героя</span>
+              <span class="road-runner-key road-runner-key-wide">R</span>
+              <span class="road-runner-label">заново</span>
+            </div>
+          </div>
+
+          <div class="road-runner-track" id="road-runner-track" aria-label="Дорога с препятствиями">
+            <div class="road-runner-road road-runner-road-a" aria-hidden="true">
+              <img src="images/brick-road.png" alt="" />
+            </div>
+            <div class="road-runner-road road-runner-road-b" aria-hidden="true">
+              <img src="images/brick-road.png" alt="" />
+            </div>
+            <div class="road-runner-obstacles" id="road-runner-obstacles" aria-hidden="true"></div>
+            <img src="images/геройнадороге.png" class="road-runner-hero" id="road-runner-hero" alt="Герой на дороге" />
+          </div>
+        </div>
+
+        <div class="screen3">
+        <div class="match3-wrap">
+        <div class="match3-copy">
+          <p class="match3-text">Собери 3 одинаковых оружия<br />в ряд</p>
+          <div class="match3-hud">
+            <p class="match3-goal">ходы: <span id="match3-moves">12</span> | молотки: <span id="match3-score">0</span>/15</p>
+          </div>
+          <p class="match3-status" id="match3-status">
+            Нажми на 2 соседние клетки,<br />чтобы поменять их местами.
+          </p>
+        </div>
+
+        <div class="match3-frame">
+          <img src="images/кирпичик10.png" class="frame-corner corner-tl" alt="" aria-hidden="true" />
+          <img src="images/кирпичик10.png" class="frame-corner corner-tr" alt="" aria-hidden="true" />
+          <img src="images/кирпичик10.png" class="frame-corner corner-bl" alt="" aria-hidden="true" />
+          <img src="images/кирпичик10.png" class="frame-corner corner-br" alt="" aria-hidden="true" />
+
+          <div class="brick-strip brick-strip-top" aria-hidden="true">
+            <img src="images/кирпичик1.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик2.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик3.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик4.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик5.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик6.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик7.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик8.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик9.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик11.png" class="frame-brick" alt="" />
+          </div>
+
+          <div class="brick-strip brick-strip-bottom" aria-hidden="true">
+            <img src="images/кирпичик11.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик9.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик8.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик7.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик6.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик5.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик4.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик3.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик2.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик1.png" class="frame-brick" alt="" />
+          </div>
+
+          <div class="brick-strip brick-strip-left" aria-hidden="true">
+            <img src="images/кирпичик1.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик3.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик5.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик7.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик9.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик11.png" class="frame-brick" alt="" />
+          </div>
+
+          <div class="brick-strip brick-strip-right" aria-hidden="true">
+            <img src="images/кирпичик11.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик9.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик7.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик5.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик3.png" class="frame-brick" alt="" />
+            <img src="images/кирпичик1.png" class="frame-brick" alt="" />
+          </div>
+
+          <div class="match3-board" id="match3-board" aria-label="Поле три в ряд"></div>
+
+          <div class="match3-tail" aria-hidden="true">
+            <div class="match3-tail-side match3-tail-left">
+              <img src="images/кирпичик1.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик7.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик9.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик11.png" class="tail-brick tail-brick-vertical" alt="" />
+            </div>
+
+            <div class="match3-tail-side match3-tail-top-upper-left">
+              <img src="images/кирпичик8.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик6.png" class="tail-brick tail-brick-vertical" alt="" />
+            </div>
+
+            <div class="match3-tail-side match3-tail-top-upper-right">
+              <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик1.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+            </div>
+
+            <div class="match3-tail-row match3-tail-top">
+              <img src="images/кирпичик1.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик10.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик7.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик11.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик8.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик4.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик9.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик1.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик10.png" class="tail-brick" alt="" />
+            </div>
+
+            <div class="match3-tail-side match3-tail-right">
+              <img src="images/кирпичик6.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик1.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик8.png" class="tail-brick tail-brick-vertical" alt="" />
+            </div>
+
+            <div class="match3-tail-row match3-tail-bottom">
+              <img src="images/кирпичик1.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик10.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик7.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик11.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик8.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик4.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик9.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик1.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик10.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик7.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик11.png" class="tail-brick" alt="" />
+            </div>
+
+            <div class="match3-tail-side match3-tail-next-right">
+              <img src="images/кирпичик6.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик1.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+            </div>
+
+            <div class="match3-tail-side match3-tail-next-right-copy">
+              <img src="images/кирпичик6.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик1.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+            </div>
+
+            <div class="match3-tail-row match3-tail-next-top-link">
+              <img src="images/кирпичик1.png" class="tail-brick" alt="" />
+              <span class="tail-gap-mid" aria-hidden="true"></span>
+              <img src="images/кирпичик11.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик8.png" class="tail-brick" alt="" />
+            </div>
+
+            <div class="match3-tail-side match3-tail-next-inner-left-up">
+              <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик8.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик6.png" class="tail-brick tail-brick-vertical" alt="" />
+            </div>
+
+            <div class="match3-tail-side match3-tail-next-inner-right-up">
+              <img src="images/кирпичик1.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик8.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик6.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+            </div>
+
+            <div class="match3-tail-row match3-tail-next-upper-line">
+              <img src="images/кирпичик6.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик9.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик1.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик10.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик3.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик7.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик5.png" class="tail-brick" alt="" />
+            </div>
+
+            <div class="match3-tail-row match3-tail-next-lower-line">
+              <img src="images/кирпичик7.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик8.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик4.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик9.png" class="tail-brick" alt="" />
+            </div>
+
+            <div class="match3-tail-row match3-tail-next-bottom-link">
+              <img src="images/кирпичик5.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик2.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик11.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик8.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик4.png" class="tail-brick" alt="" />
+              <img src="images/кирпичик9.png" class="tail-brick" alt="" />
+            </div>
+
+            <div class="match3-tail-cluster match3-tail-cluster-one" aria-hidden="true">
+              <div class="match3-tail-arc match3-tail-arc-one">
+                <img src="images/кирпичик1.png" class="tail-brick tail-arc-brick tail-arc-left" alt="" />
+                <img src="images/кирпичик8.png" class="tail-brick tail-arc-brick tail-arc-top-left" alt="" />
+                <img src="images/кирпичик10.png" class="tail-brick tail-arc-brick tail-arc-top" alt="" />
+                <img src="images/кирпичик4.png" class="tail-brick tail-arc-brick tail-arc-top-right" alt="" />
+                <img src="images/кирпичик6.png" class="tail-brick tail-arc-brick tail-arc-right" alt="" />
+              </div>
+
+              <div class="match3-tail-side match3-tail-arc-one-down-left">
+                <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+                <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+              </div>
+
+              <div class="match3-tail-side match3-tail-arc-one-down-right">
+                <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+                <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              </div>
+            </div>
+
+            <div class="match3-tail-cluster match3-tail-cluster-one-copy" aria-hidden="true">
+              <div class="match3-tail-arc match3-tail-arc-one">
+                <img src="images/кирпичик1.png" class="tail-brick tail-arc-brick tail-arc-left" alt="" />
+                <img src="images/кирпичик8.png" class="tail-brick tail-arc-brick tail-arc-top-left" alt="" />
+                <img src="images/кирпичик10.png" class="tail-brick tail-arc-brick tail-arc-top" alt="" />
+                <img src="images/кирпичик4.png" class="tail-brick tail-arc-brick tail-arc-top-right" alt="" />
+                <img src="images/кирпичик6.png" class="tail-brick tail-arc-brick tail-arc-right" alt="" />
+              </div>
+
+              <div class="match3-tail-side match3-tail-arc-one-down-left">
+                <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+                <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+              </div>
+
+              <div class="match3-tail-side match3-tail-arc-one-down-right">
+                <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+                <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              </div>
+            </div>
+
+            <div class="match3-tail-cluster match3-tail-cluster-three" aria-hidden="true">
+              <div class="match3-tail-arc match3-tail-arc-one">
+                <img src="images/кирпичик1.png" class="tail-brick tail-arc-brick tail-arc-left" alt="" />
+                <img src="images/кирпичик8.png" class="tail-brick tail-arc-brick tail-arc-top-left" alt="" />
+                <img src="images/кирпичик10.png" class="tail-brick tail-arc-brick tail-arc-top" alt="" />
+                <img src="images/кирпичик4.png" class="tail-brick tail-arc-brick tail-arc-top-right" alt="" />
+                <img src="images/кирпичик6.png" class="tail-brick tail-arc-brick tail-arc-right" alt="" />
+              </div>
+
+              <div class="match3-tail-side match3-tail-arc-one-down-left">
+                <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+                <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+              </div>
+
+              <div class="match3-tail-side match3-tail-arc-one-down-right">
+                <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+                <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              </div>
+            </div>
+
+            <div class="match3-tail-cluster match3-tail-cluster-four" aria-hidden="true">
+              <div class="match3-tail-arc match3-tail-arc-one">
+                <img src="images/кирпичик1.png" class="tail-brick tail-arc-brick tail-arc-left" alt="" />
+                <img src="images/кирпичик8.png" class="tail-brick tail-arc-brick tail-arc-top-left" alt="" />
+                <img src="images/кирпичик10.png" class="tail-brick tail-arc-brick tail-arc-top" alt="" />
+                <img src="images/кирпичик4.png" class="tail-brick tail-arc-brick tail-arc-top-right" alt="" />
+                <img src="images/кирпичик6.png" class="tail-brick tail-arc-brick tail-arc-right" alt="" />
+              </div>
+
+              <div class="match3-tail-side match3-tail-arc-one-down-left">
+                <img src="images/кирпичик3.png" class="tail-brick tail-brick-vertical" alt="" />
+                <img src="images/кирпичик5.png" class="tail-brick tail-brick-vertical" alt="" />
+              </div>
+
+              <div class="match3-tail-side match3-tail-arc-one-down-right">
+                <img src="images/кирпичик2.png" class="tail-brick tail-brick-vertical" alt="" />
+                <img src="images/кирпичик4.png" class="tail-brick tail-brick-vertical" alt="" />
+              </div>
+            </div>
+
+            <div class="match3-tail-row match3-tail-between-right" aria-hidden="true">
+              <img src="images/кирпичик8.png" class="tail-brick" alt="" />
+            </div>
+
+            <div class="match3-tail-row match3-tail-between-right-copy" aria-hidden="true">
+              <img src="images/кирпичик8.png" class="tail-brick" alt="" />
+            </div>
+
+            <div class="match3-tail-mask" aria-hidden="true"></div>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="chipmunk-shell">
+          <div class="chipmunk-copy">
+            <p class="chipmunk-title">Не дай бурундуку вылезти</p>
+            <button class="chipmunk-start" id="chipmunk-start" type="button">играть</button>
+            <div class="chipmunk-hud">
+              <p class="chipmunk-goal">поймано: <span id="chipmunk-score">0</span>/6</p>
+            </div>
+            <p class="chipmunk-status" id="chipmunk-status"></p>
+          </div>
+
+          <div class="chipmunk-game" id="chipmunk-game">
+            <div class="chipmunk-board">
+              <button class="chipmunk-hole hole-1" type="button" data-hole="0" aria-label="Кольцо слева сверху">
+                <img src="images/колькозадняя.png" class="ring ring-back" alt="" aria-hidden="true" />
+                <img src="images/бурундук.png" class="chipmunk-sprite" alt="Бурундук" />
+                <img src="images/огоньдлябурундук.png" class="chipmunk-fire" alt="" aria-hidden="true" />
+                <img src="images/кольцопередняя.png" class="ring ring-front" alt="" aria-hidden="true" />
+              </button>
+
+              <button class="chipmunk-hole hole-2" type="button" data-hole="1" aria-label="Кольцо справа сверху">
+                <img src="images/колькозадняя.png" class="ring ring-back" alt="" aria-hidden="true" />
+                <img src="images/бурундук.png" class="chipmunk-sprite" alt="Бурундук" />
+                <img src="images/огоньдлябурундук.png" class="chipmunk-fire" alt="" aria-hidden="true" />
+                <img src="images/кольцопередняя.png" class="ring ring-front" alt="" aria-hidden="true" />
+              </button>
+
+              <button class="chipmunk-hole hole-3" type="button" data-hole="2" aria-label="Кольцо слева снизу">
+                <img src="images/колькозадняя.png" class="ring ring-back" alt="" aria-hidden="true" />
+                <img src="images/бурундук.png" class="chipmunk-sprite" alt="Бурундук" />
+                <img src="images/огоньдлябурундук.png" class="chipmunk-fire" alt="" aria-hidden="true" />
+                <img src="images/кольцопередняя.png" class="ring ring-front" alt="" aria-hidden="true" />
+              </button>
+
+              <button class="chipmunk-hole hole-4" type="button" data-hole="3" aria-label="Кольцо справа снизу">
+                <img src="images/колькозадняя.png" class="ring ring-back" alt="" aria-hidden="true" />
+                <img src="images/бурундук.png" class="chipmunk-sprite" alt="Бурундук" />
+                <img src="images/огоньдлябурундук.png" class="chipmunk-fire" alt="" aria-hidden="true" />
+                <img src="images/кольцопередняя.png" class="ring ring-front" alt="" aria-hidden="true" />
+              </button>
+            </div>
+
+            <div class="chipmunk-overlay" id="chipmunk-overlay" hidden>
+              <p class="chipmunk-overlay-title" id="chipmunk-overlay-title">ты проиграл</p>
+              <button class="chipmunk-restart" id="chipmunk-restart" type="button">сыграть ещё раз</button>
+            </div>
+
+            <img src="images/молоток.png" class="chipmunk-cursor" id="chipmunk-cursor" alt="" aria-hidden="true" />
+          </div>
+        </div>
+
+        <div class="boat-scene-shell">
+          <div class="boat-scene" id="boat-scene">
+            <img src="images/вода.png" class="boat-water" alt="" />
+            <div class="boat-raft" id="boat-raft">
+              <img src="images/весло.png" class="boat-paddle" id="boat-paddle" alt="" />
+              <img src="images/человечеквлодке.png" class="boat-rider" alt="" />
+              <img src="images/лодка.png" class="boat-sprite" alt="" />
+            </div>
+            <p class="boat-status" id="boat-status" hidden>задание выполнено</p>
+          </div>
+          <div class="boat-ui">
+            <button class="boat-drive-button" id="boat-drive-button" type="button">плыть</button>
+          </div>
+        </div>
+
+        <div class="scan-scene-shell">
+          <div class="scan-ui">
+            <button class="scan-button" id="scan-button" type="button">scan</button>
+          </div>
+          <div class="scan-frame" id="scan-frame">
+            <img src="images/персрамка.png" class="scan-character" alt="Персонаж для сканирования" />
+            <div class="scan-beam" id="scan-beam" aria-hidden="true"></div>
+            <div class="scan-glow" id="scan-glow" aria-hidden="true"></div>
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
