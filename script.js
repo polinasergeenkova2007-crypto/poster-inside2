@@ -72,6 +72,11 @@ if (nextBlockBricksEl && nextBlockSvg) {
           img.style.left = `${x / 10}%`;
           img.style.top = `${y / 8.6}%`;
           img.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+          img.style.outline = "3px solid rgba(82, 255, 136, 0.95)";
+          img.style.outlineOffset = "2px";
+          img.style.background = "rgba(82, 255, 136, 0.12)";
+          img.style.filter =
+            "brightness(1.08) saturate(1.08) drop-shadow(0 0 8px rgba(82, 255, 136, 0.95))";
           nextBlockBricksEl.appendChild(img);
           brickIndex += 1;
         }
