@@ -2206,7 +2206,15 @@ body {
     --maze-field-width: var(--tablet-maze-field-width);
     --maze-field-height: var(--tablet-maze-field-height);
     height: var(--tablet-stage-height);
+    background-image: url("images/tablet-bricks.png");
+    background-repeat: no-repeat;
+    background-position: center -260px;
+    background-size: 1500px auto;
     transform: translate(-50%, -120px) scale(var(--tablet-stage-scale));
+  }
+
+  .screen2-stage::before {
+    content: none;
   }
 
   .maze-ui {
